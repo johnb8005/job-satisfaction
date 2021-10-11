@@ -1,6 +1,6 @@
 {
-  "name": "solve-2nd-deg-equation",
-  "version": "0.0.7",
+  "name": "job-satisfaction",
+  "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
