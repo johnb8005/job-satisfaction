@@ -1,0 +1,10 @@
+{
+  "imports": {
+    "@nexys/react-bootstrap/dist/form/input/text": "./@nexys/react-bootstrap/dist/form/input/text.js",
+    "@nexys/react-bootstrap/dist/form/wrapper": "./@nexys/react-bootstrap/dist/form/wrapper.js",
+    "react": "./react.js",
+    "react-chartjs-2": "./react-chartjs-2.js",
+    "react-dom": "./react-dom.js",
+    "react-router-dom": "./react-router-dom.js"
+  }
+}
