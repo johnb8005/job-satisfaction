@@ -43,7 +43,7 @@ const Form = ({
         <Input value={data.name || ""} onChange={(v) => handleChangeName(v)} />
       </Wrapper>
 
-      <ul>
+      <ul className={"list-unstyled"}>
         {U.keys.map((k, i) => (
           <C.Wrapper key={i} name={U.labels.get(k) || ""}>
             <C.Slider

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import JobSatisfaction from "./job-satisfaction";
+import JobSatisfaction from "./ui";
 
 const NotFound = () => (
   <p>
