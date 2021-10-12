@@ -15,10 +15,12 @@ const Score = ({
   }
 
   return (
-    <p>
-      {/* {U.formatNumber(U.getScore(matrix))} -{" "} */}
-      {U.formatNumber(U.getScoreWeighted(matrix, weights))}
-    </p>
+    <h1>
+      <span className="badge badge-primary">
+        {/* {U.formatNumber(U.getScore(matrix))} -{" "} */}
+        {U.formatNumber(U.getScoreWeighted(matrix, weights))}
+      </span>
+    </h1>
   );
 };
 

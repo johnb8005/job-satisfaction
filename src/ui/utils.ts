@@ -106,3 +106,25 @@ export const importData = (
 
   return { weights, data };
 };
+
+const arrayBufferToString = async (p: ArrayBuffer): Promise<string> => {
+  const blob = new Blob([p], { type: "text/plain" });
+  return await blob.text();
+};
+
+export const readUploadedFileAndTransform = async (
+  files: FileList | null
+): Promise<{
+  weights: Matrix;
+  data: Data[];
+}> => {
+  if (!files) {
+    return Promise.reject("files could not be read");
+  }
+
+  const file = files[0];
+
+  const p = await file.arrayBuffer();
+  const t = await arrayBufferToString(p);
+  return importData(t);
+};

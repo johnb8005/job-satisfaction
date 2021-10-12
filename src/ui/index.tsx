@@ -14,27 +14,6 @@ export default () => {
 
   return (
     <div className="container">
-      {showWeight && (
-        <>
-          <Weights onChange={(v) => setWeights(v)} />{" "}
-          <button
-            className={"btn btn-secondary"}
-            type="button"
-            onClick={() => setShowWeight(false)}
-          >
-            Hide weights
-          </button>
-        </>
-      )}
-      {!showWeight && (
-        <button
-          className={"btn btn-secondary"}
-          type="button"
-          onClick={() => setShowWeight(true)}
-        >
-          Adjust weights
-        </button>
-      )}
       <div className="row">
         {/*}   <code>{JSON.stringify(data)}</code>*/}
         {data.map((d, i) => (
@@ -59,7 +38,6 @@ export default () => {
           </div>
         ))}
       </div>
-
       <button
         className={"btn btn-sm btn-primary"}
         type="button"
@@ -67,9 +45,7 @@ export default () => {
       >
         Add
       </button>
-
       {data.length > 0 && <Chart weights={weights} data={data} />}
-
       {data.length > 0 && (
         <>
           &nbsp;
@@ -82,26 +58,44 @@ export default () => {
           </button>
         </>
       )}
-
       {data.length === 0 && (
         <input
           type="file"
           onChange={async (c) => {
-            if (!c.target.files) {
-              return;
-            }
-
-            const file = c.target.files[0];
-
-            const p = await file.arrayBuffer();
-            const blob = new Blob([p], { type: "text/plain" });
-            const t = await blob.text();
-            const j = U.importData(t);
+            const j = await U.readUploadedFileAndTransform(c.target.files);
 
             setData(j.data);
+            setWeights(j.weights);
           }}
         />
       )}
+      &nbsp;
+      <br />
+      <div className="row">
+        <div className="col-md-6">
+          {showWeight && (
+            <>
+              <Weights onChange={(v) => setWeights(v)} />{" "}
+              <button
+                className={"btn btn-secondary btn-sm"}
+                type="button"
+                onClick={() => setShowWeight(false)}
+              >
+                Hide weights
+              </button>
+            </>
+          )}
+          {!showWeight && (
+            <button
+              className={"btn btn-secondary btn-sm"}
+              type="button"
+              onClick={() => setShowWeight(true)}
+            >
+              Adjust weights
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

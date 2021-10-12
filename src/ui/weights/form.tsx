@@ -13,7 +13,7 @@ const Form = ({ onChange }: { onChange: (matrix: Matrix) => void }) => {
   };
 
   return (
-    <ul>
+    <ul className={"list-unstyled"}>
       {U.keys.map((k, i) => (
         <C.Wrapper key={i} name={U.labels.get(k) || ""}>
           <C.Slider
