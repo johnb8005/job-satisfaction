@@ -26,7 +26,9 @@ const Form = ({
   }, /* @__PURE__ */ React.createElement(Input, {
     value: data.name || "",
     onChange: (v) => handleChangeName(v)
-  })), /* @__PURE__ */ React.createElement("ul", null, U.keys.map((k, i) => /* @__PURE__ */ React.createElement(C.Wrapper, {
+  })), /* @__PURE__ */ React.createElement("ul", {
+    className: "list-unstyled"
+  }, U.keys.map((k, i) => /* @__PURE__ */ React.createElement(C.Wrapper, {
     key: i,
     name: U.labels.get(k) || ""
   }, /* @__PURE__ */ React.createElement(C.Slider, {
