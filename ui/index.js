@@ -9,17 +9,7 @@ export default () => {
   const [showWeight, setShowWeight] = React.useState(false);
   return /* @__PURE__ */ React.createElement("div", {
     className: "container"
-  }, showWeight && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Weights, {
-    onChange: (v) => setWeights(v)
-  }), " ", /* @__PURE__ */ React.createElement("button", {
-    className: "btn btn-secondary",
-    type: "button",
-    onClick: () => setShowWeight(false)
-  }, "Hide weights")), !showWeight && /* @__PURE__ */ React.createElement("button", {
-    className: "btn btn-secondary",
-    type: "button",
-    onClick: () => setShowWeight(true)
-  }, "Adjust weights"), /* @__PURE__ */ React.createElement("div", {
+  }, /* @__PURE__ */ React.createElement("div", {
     className: "row"
   }, data.map((d, i) => /* @__PURE__ */ React.createElement("div", {
     key: i,
@@ -51,15 +41,23 @@ export default () => {
   }, "to CSV")), data.length === 0 && /* @__PURE__ */ React.createElement("input", {
     type: "file",
     onChange: async (c) => {
-      if (!c.target.files) {
-        return;
-      }
-      const file = c.target.files[0];
-      const p = await file.arrayBuffer();
-      const blob = new Blob([p], {type: "text/plain"});
-      const t = await blob.text();
-      const j = U.importData(t);
+      const j = await U.readUploadedFileAndTransform(c.target.files);
       setData(j.data);
+      setWeights(j.weights);
     }
-  }));
+  }), " ", /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("div", {
+    className: "row"
+  }, /* @__PURE__ */ React.createElement("div", {
+    className: "col-md-6"
+  }, showWeight && /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(Weights, {
+    onChange: (v) => setWeights(v)
+  }), " ", /* @__PURE__ */ React.createElement("button", {
+    className: "btn btn-secondary btn-sm",
+    type: "button",
+    onClick: () => setShowWeight(false)
+  }, "Hide weights")), !showWeight && /* @__PURE__ */ React.createElement("button", {
+    className: "btn btn-secondary btn-sm",
+    type: "button",
+    onClick: () => setShowWeight(true)
+  }, "Adjust weights"))));
 };

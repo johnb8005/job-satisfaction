@@ -70,3 +70,16 @@ export const importData = (dataIn) => {
   });
   return {weights, data};
 };
+const arrayBufferToString = async (p) => {
+  const blob = new Blob([p], {type: "text/plain"});
+  return await blob.text();
+};
+export const readUploadedFileAndTransform = async (files) => {
+  if (!files) {
+    return Promise.reject("files could not be read");
+  }
+  const file = files[0];
+  const p = await file.arrayBuffer();
+  const t = await arrayBufferToString(p);
+  return importData(t);
+};

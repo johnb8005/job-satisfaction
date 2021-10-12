@@ -7,6 +7,8 @@ const Score = ({
   if (!U.isNotPartial(matrix)) {
     return /* @__PURE__ */ React.createElement(React.Fragment, null);
   }
-  return /* @__PURE__ */ React.createElement("p", null, U.formatNumber(U.getScoreWeighted(matrix, weights)));
+  return /* @__PURE__ */ React.createElement("h1", null, /* @__PURE__ */ React.createElement("span", {
+    className: "badge badge-primary"
+  }, U.formatNumber(U.getScoreWeighted(matrix, weights))));
 };
 export default Score;

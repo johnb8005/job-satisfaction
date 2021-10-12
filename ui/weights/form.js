@@ -7,7 +7,9 @@ const Form = ({onChange}) => {
     setMatrix(matrix2);
     onChange(matrix2);
   };
-  return /* @__PURE__ */ React.createElement("ul", null, U.keys.map((k, i) => /* @__PURE__ */ React.createElement(C.Wrapper, {
+  return /* @__PURE__ */ React.createElement("ul", {
+    className: "list-unstyled"
+  }, U.keys.map((k, i) => /* @__PURE__ */ React.createElement(C.Wrapper, {
     key: i,
     name: U.labels.get(k) || ""
   }, /* @__PURE__ */ React.createElement(C.Slider, {
